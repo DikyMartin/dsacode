@@ -42,6 +42,15 @@ void postOrder(node*root) {
     printf("%d ",root->val);
 }
 
+int search(node*root,int target){
+    if(!root)return -1;
+
+    if(root->val==target)return 1;
+    else if(target>root->val)return search(root->right,target);
+    else return search(root->left,target);
+}
+
+
 int main(){
     node*root=NULL;
     root=insertTree(root,30);
@@ -55,6 +64,8 @@ int main(){
     inOrder(root);// kiri print kanan
     puts("");
     postOrder(root);// kiri kanan print
+
+    printf("\n%d",search(root,24));
 
     return 0;
 }
