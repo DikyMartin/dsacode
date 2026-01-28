@@ -50,7 +50,6 @@ int search(node*root,int target){
     else return search(root->left,target);
 }
 
-
 int main(){
     node*root=NULL;
     root=insertTree(root,30);
