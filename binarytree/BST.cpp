@@ -16,8 +16,9 @@ node*createNode(int val){
 
 node*insertTree(node*root,int val){
     if(!root)return createNode(val);
-    else if(val<root->val)root->left=insertTree(root->left,val);
-    else root->right=insertTree(root->right,val);
+    // else if(val<root->val)root->left=insertTree(root->left,val);
+    // else root->right=insertTree(root->right,val);
+    (val<root->val)?root->left=insertTree(root->left,val):root->right=insertTree(root->right,val);
     return root;
 }
 
@@ -31,8 +32,9 @@ node*insertTree(node*root,int val){
 node*searchTree(node*root,int x){
     if(!root)return NULL;
     if(root->val==x)return root;
-    else if(x<root->val)return searchTree(root->left,x);
-    else return searchTree(root->right,x);
+    // else if(x<root->val)return searchTree(root->left,x);
+    // else return searchTree(root->right,x);
+    return(x<root->val)?searchTree(root->left,x):searchTree(root->right,x);
 }
 
 node*deleteTree(node*root,int val){

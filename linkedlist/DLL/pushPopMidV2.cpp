@@ -24,7 +24,6 @@ void pushMid(int data,int target){
 
     list*curr=head;
     while(curr&&curr->data!=target)curr=curr->next;
-
     if(!curr)return;
 
     newList->next=curr->next;
