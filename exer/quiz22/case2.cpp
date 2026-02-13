@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <time.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+#include<time.h>
 
 struct node{
     char adr[100];
@@ -11,15 +11,7 @@ struct node{
     struct node*next;
 }*head=NULL;
 
-struct dnode{
-    char adr[100];
-    char id[100];
-    char type[100];
-    struct dnode*next,*prev;
-}*dtail=NULL,*dhead=NULL;
-
 typedef struct node node;
-typedef struct dnode dnode;
 
 node*createNode(char*adr,char*id,char*type){
     node*newNode=(node*)malloc(sizeof(node));
@@ -56,22 +48,7 @@ void popPackage(){
     free(temp);
 }
 
-void pushTail(char*adr,char*id,char*type){
-    dnode*newNode=(dnode*)malloc(sizeof(dnode));
-    strcpy(newNode->adr,adr);
-    strcpy(newNode->id,id);
-    strcpy(newNode->type,type);
-    newNode->next=newNode->prev=NULL;
-
-    if(!dtail)dhead=dtail=newNode;
-    else{
-        newNode->prev=dtail;
-        dtail->next=newNode;
-        dtail=newNode;
-    }
-}
-
-void viewAvai(){
+void viewAll(){
     node*curr=head;
     while(curr){
         printf("%s - %s - %s\n",curr->id,curr->type,curr->adr);
@@ -120,7 +97,6 @@ int main(){
                 else{
                     node*curr=head;
                     printf("%s (%s) successfully sent to %s\n",curr->id,curr->type,curr->adr);
-                    pushTail(curr->adr,curr->id,curr->type);
                     popPackage();
                 }
                 getchar();
@@ -128,7 +104,7 @@ int main(){
 
             case 3:
                 if(!head)printf("No data\n");
-                else viewAvai();
+                else viewAll();
                 getchar();
             break;
 
